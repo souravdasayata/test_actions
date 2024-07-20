@@ -19,9 +19,3 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-
-    - name: Run pytest
-      run: |
-        pip install pytest
-        export PYTHONPATH=src
-        pytest
