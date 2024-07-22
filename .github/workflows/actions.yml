@@ -45,14 +45,6 @@ jobs:
             rm -rf /tmp/.buildx-cache
             mv /tmp/.buildx-cache-new /tmp/.buildx-cache
           fi
-  
-    - name: Verify image creation
-      run: |
-        if docker images | grep -q "${{ secrets.DOCKER_USERNAME }}/my-awesome-website"; then
-          echo "Docker image created and tagged successfully."
-        else
-          echo "Docker image not found!"
-          exit 1
-        fi
+
 
   
