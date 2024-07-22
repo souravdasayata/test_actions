@@ -32,32 +32,21 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
       with:
-        context: .
-        push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/my-awesome-website:latest
-        cache-from: type=local,src=.buildx-cache
-        cache-to: type=local,dest=.buildx-cache-new
-
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/my-awesome-website:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+  
     - name: Save cache to disk
+      if: always()
       run: |
-        rm -rf /tmp/.buildx-cache
-        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-
+          if [ -d /tmp/.buildx-cache-new ]; then
+            rm -rf /tmp/.buildx-cache
+            mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          fi
+  
     - name: Verify image creation
       run: docker images | grep my-awesome-website
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout code
-#       uses: actions/checkout@v2
 
-#     - name: Set up Python
-#       uses: actions/setup-python@v2
-#       with:
-#         python-version: '3.11.7'
-
-#     - name: Install dependencies
-#       run: |
-#         python -m pip install --upgrade pip
   
