@@ -34,7 +34,7 @@ jobs:
       with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/my-awesome-website:latest
+          tags: my-awesome-website:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
   
