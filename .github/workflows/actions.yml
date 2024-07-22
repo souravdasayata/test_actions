@@ -47,6 +47,12 @@ jobs:
           fi
   
     - name: Verify image creation
-      run: docker images | grep my-awesome-website
+      run: |
+        if docker images | grep -q "${{ secrets.DOCKER_USERNAME }}/my-awesome-website"; then
+          echo "Docker image created and tagged successfully."
+        else
+          echo "Docker image not found!"
+          exit 1
+        fi
 
   
