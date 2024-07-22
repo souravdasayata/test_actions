@@ -46,11 +46,11 @@ jobs:
             mv /tmp/.buildx-cache-new /tmp/.buildx-cache
           fi
 
-    - name: Pull Docker image
-      run: docker pull my-awesome-website:latest
+    # - name: Pull Docker image
+    #   run: docker pull my-awesome-website:latest
 
-    - name: Run Docker container
-      run: |
-          docker run -d --name my-awesome-website:latest
+    # - name: Run Docker container
+    #   run: |
+    #       docker run -d my-awesome-website:latest
 
   
