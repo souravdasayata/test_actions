@@ -38,13 +38,13 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
   
-    - name: Save cache to disk
-      if: always()
-      run: |
-          if [ -d /tmp/.buildx-cache-new ]; then
-            rm -rf /tmp/.buildx-cache
-            mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-          fi
+    # - name: Save cache to disk
+    #   if: always()
+    #   run: |
+    #       if [ -d /tmp/.buildx-cache-new ]; then
+    #         rm -rf /tmp/.buildx-cache
+    #         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+    #       fi
 
     # - name: Pull Docker image
     #   run: docker pull my-awesome-website:latest
