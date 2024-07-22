@@ -51,6 +51,6 @@ jobs:
 
     - name: Run Docker container
       run: |
-          docker run -d --name my-container my-awesome-website:latest
+          docker run -d --name my-awesome-website:latest
 
   
