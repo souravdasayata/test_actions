@@ -35,8 +35,8 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/my-awesome-website:latest
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new
+        cache-from: type=local,src=.buildx-cache
+        cache-to: type=local,dest=.buildx-cache-new
 
     - name: Save cache to disk
       run: |
