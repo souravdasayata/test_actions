@@ -46,7 +46,7 @@ jobs:
             mv /tmp/.buildx-cache-new /tmp/.buildx-cache
           fi
   
-    # - name: Verify image creation
-    #   run: docker images | grep my-awesome-website
+    - name: Verify image creation
+      run: docker images | grep my-awesome-website
 
   
